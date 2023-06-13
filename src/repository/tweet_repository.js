@@ -22,6 +22,25 @@ class TweetRepository{
     }
   }
 
+  async getTweet(id){
+    try{
+        let tweet= await Tweet.findById(id);
+        return tweet;
+    }catch(error){
+        throw error;
+    }
+  }
+
+  async deleteTweet(data){
+    try{
+        let tweet= await Tweet.deleteOne(data);
+        return tweet;
+    }
+    catch(error){
+        throw error;
+    }
+  }
+
 }
 
 export default TweetRepository;
