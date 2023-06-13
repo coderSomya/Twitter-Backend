@@ -1,7 +1,6 @@
 import express from "express";
 import {connect} from "./config/database.js"
-import Tweet from "./models/tweet.js";
-import Hashtag from "./models/hashtag.js";
+import TweetRepository from "./repository/tweet_repository.js";
 
 const app= express();
 
@@ -9,5 +8,7 @@ app.listen(3000, async()=>{
     connect();
     console.log("app listening");
 
-    
+    const tweetRepo = new TweetRepository();
+    let tweets= await tweetRepo.getAllTweets();
+    console.log(tweets);
 })
